@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALIKE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Quicksand', 'sans-serif'],
+            },
+            colors: {
+              primary: '#8B5CF6', // Violet-500
+              primaryDark: '#7C3AED',
+              secondary: '#6EE7B7', // Emerald-300
+              secondaryDark: '#34D399',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              popIn: {
+                '0%': { opacity: '0', transform: 'scale(0.8)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
+              },
+              swipeHint: {
+                '0%': { transform: 'translateX(-30px) rotate(-15deg)', opacity: '0' },
+                '20%': { opacity: '1' },
+                '50%': { transform: 'translateX(30px) rotate(15deg)', opacity: '1' },
+                '100%': { transform: 'translateX(30px) rotate(15deg)', opacity: '0' },
+              }
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'fade-in-up': 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'pop-in': 'popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+              'swipe-hint': 'swipeHint 1.8s ease-in-out infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        display: flex;
+        justify-content: center;
+        /* Removed align-items: center to prevent clipping of tall content */
+        min-height: 100vh;
+      }
+      #root {
+        width: 100%;
+        max-width: 480px; /* Mobile width constraint for desktop view */
+        min-height: 100vh; /* Allow it to grow */
+        background: white;
+        position: relative;
+        /* Removed overflow: hidden and fixed heights to allow native scrolling */
+        box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      }
+      
+      /* Dark mode body fix */
+      html.dark body {
+        background-color: #111827;
+      }
+      html.dark #root {
+        background-color: #0f172a;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      }
+      
+      /* Utility classes for animation delays */
+      .delay-75 { animation-delay: 75ms; }
+      .delay-100 { animation-delay: 100ms; }
+      .delay-150 { animation-delay: 150ms; }
+      .delay-200 { animation-delay: 200ms; }
+      .delay-300 { animation-delay: 300ms; }
+      .delay-500 { animation-delay: 500ms; }
+      
+      /* Ensure elements are hidden before animation starts to prevent flashing */
+      .animate-fade-in-up, .animate-pop-in, .animate-fade-in {
+        opacity: 0;
+      }
+
+      /* Utility to hide scrollbar */
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+      .scrollbar-hide {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
